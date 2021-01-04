@@ -1,0 +1,1184 @@
+import React from 'react';
+import {
+    View,
+    ScrollView,
+    Text,
+    TextInput,
+    SafeAreaView,
+    Switch,
+    TouchableWithoutFeedback,
+    StyleSheet,
+    TouchableOpacity
+} from 'react-native';
+import DropDownPicker from 'react-native-dropdown-picker';
+import { Card, Icon, Radio, Right, Separator, Content, Form } from 'native-base';
+import HeaderComponent from "../../../components/HeaderComponent";
+import PhotosComponent from "../../../components/editprofile/PhotosComponent";
+import { appStyles, fontSize, fontStyle, shadow } from "../../../themes/styles";
+import { WHITE } from "../../../themes/colors";
+
+class EditProfileScreen extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: "key1"
+        };
+    }
+    onValueChange(value) {
+        this.setState({
+            selected: value
+        });
+    }
+
+    render() {
+        const { bio, job_title, company, university, sex } = this.state;
+        return (
+
+            <ScrollView>
+
+                <HeaderComponent
+                    title={'Edit Profile'}
+                    leftPress={() => this.props.navigation.pop()} />
+                <SafeAreaView style={styles.mainBody}>
+
+
+
+                    <View
+                        style={{ padding: 30, }}>
+
+                        <Text style={{
+                            right: 5,
+                            color: "#000", fontSize: 17, fontWeight: "bold"
+                        }}> Find Your Suitable Match!</Text>
+                        <Text style={{ fontSize: 16, fontWeight: "bold", }}>
+                            Profile Created By</Text>
+                        <View style={{ height: 10 }}></View>
+                        <Text
+                            style={{
+                                color: 'gray', fontWeight: 'bold',
+                                fontSize: 13, top: 25
+                            }}>
+                            Select who is creating profile
+            </Text>
+
+                    </View>
+                    <View style={{
+                        flex: 1, flexDirection: "row",
+                        justifyContent: "space-around", width: "80%",
+                    }}>
+
+                        <View style={{
+                            flexDirection: 'row', alignItems: 'center',
+                            justifyContent: "flex-start"
+                        }}>
+                            <View
+                                style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    width: 100,
+                                    height: 35,
+                                    textAlign: 'center',
+                                    borderRadius: 30,
+                                    borderWidth: 1,
+                                    borderColor: '#62D248',
+                                    top: 10,
+                                    left: 30
+
+                                }}>
+                                <Text style={{ color: "#62D248" }}>Self</Text>
+
+                            </View>
+                            <View
+                                style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    width: 100,
+                                    height: 35,
+                                    textAlign: 'center',
+                                    borderRadius: 30,
+                                    borderWidth: 1,
+                                    borderColor: '#62D248',
+                                    top: 10,
+                                    left: 40
+
+                                }}>
+                                <Text style={{ color: "#62D248" }}>Son</Text>
+
+                            </View>
+                            <View
+                                style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    width: 100,
+                                    height: 35,
+                                    textAlign: 'center',
+                                    borderRadius: 30,
+                                    borderWidth: 1,
+                                    borderColor: '#62D248',
+                                    top: 10,
+                                    left: 50
+
+                                }}>
+                                <Text style={{ color: "#62D248" }}>Daughter</Text>
+
+                            </View>
+
+
+                        </View>
+                        <View style={{ height: 10 }}></View>
+                    </View>
+                    <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-around", width: "80%", marginTop: 10 }}>
+
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "flex-start" }}>
+                            <View
+                                style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    width: 100,
+                                    height: 35,
+                                    textAlign: 'center',
+                                    borderRadius: 30,
+                                    borderWidth: 1,
+                                    borderColor: '#62D248',
+                                    top: 10,
+                                    left: 30
+
+                                }}>
+                                <Text style={{ color: "#62D248" }}>Brother</Text>
+
+                            </View>
+                            <View
+                                style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    width: 100,
+                                    height: 35,
+                                    textAlign: 'center',
+                                    borderRadius: 30,
+                                    borderWidth: 1,
+                                    borderColor: '#62D248',
+                                    top: 10,
+                                    left: 40
+
+                                }}>
+                                <Text style={{ color: "#62D248" }}>Sister</Text>
+
+                            </View>
+                            <View
+                                style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    width: 100,
+                                    height: 35,
+                                    textAlign: 'center',
+                                    borderRadius: 30,
+                                    borderWidth: 1,
+                                    borderColor: '#62D248',
+                                    top: 10,
+                                    left: 50
+
+                                }}>
+                                <Text style={{ color: "#62D248" }}>Other</Text>
+
+                            </View>
+
+
+                        </View>
+                        <View style={{ height: 10 }}></View>
+                    </View>
+
+                    <View
+                        style={{ padding: 30, }}>
+
+                        <Text style={{
+                            color: "#454F63", fontSize: 17, fontWeight: "bold"
+                        }}>Gender</Text>
+                        <Text style={{ fontSize: 14, fontWeight: "bold", color: "gray" }}>
+                            Gender of the bride/groom
+            </Text>
+                        <View style={{ height: 10 }}></View>
+                    </View>
+
+
+                    <View style={{
+                        flex: 1, flexDirection: "row", justifyContent: "space-around", width: "80%",
+                        bottom: 30, right: 25
+                    }}>
+
+                        <View style={{ flexDirection: 'row', alignItems: 'center', }}>
+                            <View
+                                style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    width: 100,
+                                    height: 35,
+                                    textAlign: 'center',
+                                    borderRadius: 30,
+                                    borderWidth: 1,
+                                    borderColor: '#62D248',
+
+                                    left: 30
+
+                                }}>
+                                <Text style={{ color: "#62D248" }}>Male</Text>
+
+                            </View>
+                            <View
+                                style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    width: 100,
+                                    height: 35,
+                                    textAlign: 'center',
+                                    borderRadius: 30,
+                                    borderWidth: 1,
+                                    borderColor: '#62D248',
+
+                                    left: 40
+
+                                }}>
+                                <Text style={{ color: "#62D248" }}>Son</Text>
+
+                            </View>
+
+                        </View>
+                        <View style={{ height: 10 }}></View>
+                    </View>
+                    <View>
+                        <TextInput label="Name"
+
+                            mode="outlined"
+                            dense={true}
+                            // ref={textInput.current.clear()}
+                            theme={{
+                                colors: {
+                                    primary: '#602F56',
+                                    fontFamily: "normal normal medium 14px/17px Inter"
+                                },
+                            }}
+                            style={{
+                                borderRadius: 20,
+                                borderColor: '#00000014',
+                                borderLeftWidth: 1,
+                                borderBottomEndRadius: 30,
+                                borderBottomStartRadius: 30,
+                                borderTopStartRadius: 30,
+
+                                borderTopColor: '#00000014',
+                                marginRight: 55,
+                                marginLeft: 10,
+
+                                borderTopEndRadius: 0,
+                                borderTopWidth: 0,
+                                borderStartColor: '#00000014',
+                                borderEndColor: '#00000014',
+                                borderRightColor: '#00000014',
+                                borderLeftColor: '#00000014',
+                                fontSize: 14,
+                                opacity: 0.9,
+                                left: 20,
+                                shadowColor: '#00000014',
+                                shadowOffset: {
+                                    width: 0,
+                                    height: 15,
+                                },
+                                shadowOpacity: 0.58,
+                                shadowRadius: 16.0,
+
+                                //  elevation: 24,
+                            }}
+
+                        />
+
+                        <Text
+                            style={{ fontSize: 15 }}>
+                            Enter the name of groom
+            </Text>
+                        <View style={{ height: 10 }}></View>
+                    </View>
+
+                    <DropDownPicker
+                        items={[
+                            { label: '1', value: 'Single', icon: () => <Icon name="Single" size={18} color="#900" />, hidden: true },
+                            { label: '2', value: 'Divorce', icon: () => <Icon name="flag" size={18} color="#900" /> },
+                            { label: '3', value: 'Awaiting Divorce', icon: () => <Icon name="flag" size={18} color="#900" /> },
+                            { label: '4', value: 'Widow', icon: () => <Icon name="flag" size={18} color="#900" /> },
+
+                        ]}
+                        // defaultValue={this.state.country}
+                        containerStyle={{
+                            height: 40, width: "40%",
+                            alignSelf: "center", left: 90, bottom: 71,
+
+
+                        }}
+                        style={{
+                            backgroundColor: '#00000014', borderStartColor: '#9E9E9E',
+                            borderEndColor: '#9E9E9E',
+                            borderTopColor: '#9E9E9E',
+                            borderBottomColor: '#9E9E9E',
+                        }}
+                        itemStyle={{
+                            justifyContent: 'flex-start'
+                        }}
+                        dropDownStyle={{ backgroundColor: '#fafafa' }}
+                    // onChangeItem={item => this.setState({
+                    //     country: item.value
+                    // })}
+                    />
+                    <Text
+                        style={styles.text}>
+                        Marital Status
+                     </Text>
+
+
+
+                    <TextInput label="Date of birth"
+
+                        mode="outlined"
+                        dense={true}
+                        // ref={textInput.current.clear()}
+                        theme={{
+                            colors: {
+                                primary: '#602F56',
+                                fontFamily: "normal normal medium 14px/17px Inter"
+                            },
+                        }}
+                        style={{
+                            borderRadius: 20,
+                            borderColor: '#00000014',
+                            borderLeftWidth: 1,
+                            borderBottomEndRadius: 30,
+                            borderBottomStartRadius: 30,
+                            borderTopStartRadius: 30,
+                            // borderStyle: 'dashed',
+                            borderTopColor: '#00000014',
+                            marginRight: 55,
+                            marginLeft: 10,
+                            borderTopEndRadius: 0,
+                            borderTopWidth: 0,
+                            borderStartColor: '#00000014',
+                            borderEndColor: '#00000014',
+                            borderRightColor: '#00000014',
+                            borderLeftColor: '#00000014',
+                            fontSize: 14,
+                            opacity: 0.9,
+                            left: 20,
+                            bottom: 5,
+                            shadowColor: '#00000014',
+                            shadowOffset: {
+                                width: 0,
+                                height: 15,
+                            },
+                            shadowOpacity: 0.58,
+                            shadowRadius: 16.0,
+
+                            //  elevation: 24,
+                        }}
+
+                    />
+
+                    <Text
+                        style={styles.registerTextStyle6}>
+                        Date of birth of groom
+            </Text>
+
+
+                    <DropDownPicker
+                        items={[
+                            { label: '1', value: 'Single', icon: () => <Icon name="Single" size={18} color="#900" />, hidden: true },
+                            { label: '2', value: 'Divorce', icon: () => <Icon name="flag" size={18} color="#900" /> },
+                            { label: '3', value: 'Awaiting Divorce', icon: () => <Icon name="flag" size={18} color="#900" /> },
+                            { label: '4', value: 'Widow', icon: () => <Icon name="flag" size={18} color="#900" /> },
+
+                        ]}
+                        // defaultValue={this.state.country}
+                        containerStyle={{
+                            height: 40, width: "40%",
+                            alignSelf: "center", right: 96,
+                            bottom: 240
+                        }}
+                        style={{
+                            backgroundColor: '#00000014', borderStartColor: '#9E9E9E',
+                            borderEndColor: '#9E9E9E',
+                            borderTopColor: '#9E9E9E',
+                            borderBottomColor: '#9E9E9E',
+                        }}
+                        itemStyle={{
+                            justifyContent: 'flex-start'
+                        }}
+                        dropDownStyle={{ backgroundColor: '#fafafa' }}
+                    // onChangeItem={item => this.setState({
+                    //     country: item.value
+                    // })}
+                    />
+                    <Text
+                        style={styles.text}>
+                        No.of Children
+            </Text>
+
+                    <DropDownPicker
+                        items={[
+                            { label: '1', value: 'Single', icon: () => <Icon name="Single" size={18} color="#900" />, hidden: true },
+                            { label: '2', value: 'Divorce', icon: () => <Icon name="flag" size={18} color="#900" /> },
+                            { label: '3', value: 'Awaiting Divorce', icon: () => <Icon name="flag" size={18} color="#900" /> },
+                            { label: '4', value: 'Widow', icon: () => <Icon name="flag" size={18} color="#900" /> },
+
+                        ]}
+                        // defaultValue={this.state.country}
+                        containerStyle={{
+                            height: 40, width: "40%",
+                            alignSelf: "center", right: 96,
+                            bottom: 240
+                        }}
+                        style={{
+                            backgroundColor: '#00000014', borderStartColor: '#9E9E9E',
+                            borderEndColor: '#9E9E9E',
+                            borderTopColor: '#9E9E9E',
+                            borderBottomColor: '#9E9E9E',
+                        }}
+                        itemStyle={{
+                            justifyContent: 'flex-start'
+                        }}
+                        dropDownStyle={{ backgroundColor: '#fafafa' }}
+                    // onChangeItem={item => this.setState({
+                    //     country: item.value
+                    // })}
+                    />
+                    <Text
+                        style={styles.text1}>
+                        Height
+            </Text>
+
+                    <Text
+                        style={styles.text2}>
+
+                        Physical Status
+          </Text>
+                    <View style={{ bottom: 60, left: 25 }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.text3}>
+                            Normal
+            </Text>
+                    </View>
+                    <View style={{ bottom: 90, left: 25 }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.text4}>
+                            Physically Challenged
+            </Text>
+                    </View>
+
+
+
+
+                    <Text
+                        style={styles.Text}>
+
+                        Are You Manglik?
+          </Text>
+                    <View style={{ bottom: 95, left: 25 }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.Text1}>
+                            Yes
+            </Text>
+                    </View>
+                    <View style={{ bottom: 125, left: 25 }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.Text2}>
+                            No
+            </Text>
+                    </View>
+                    <View style={{ bottom: 155, left: 25 }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.Text3}>
+                            Don't Know
+            </Text>
+                    </View>
+
+
+
+                    <DropDownPicker
+                        items={[
+                            { label: '1', value: 'Single', icon: () => <Icon name="Single" size={18} color="#900" />, hidden: true },
+                            { label: '2', value: 'Divorce', icon: () => <Icon name="flag" size={18} color="#900" /> },
+                            { label: '3', value: 'Awaiting Divorce', icon: () => <Icon name="flag" size={18} color="#900" /> },
+                            { label: '4', value: 'Widow', icon: () => <Icon name="flag" size={18} color="#900" /> },
+
+                        ]}
+                        // defaultValue={this.state.country}
+                        containerStyle={{
+                            height: 40, width: "40%",
+                            alignSelf: "center", right: 96,
+                            bottom: 240
+                        }}
+                        style={{
+                            backgroundColor: '#00000014', borderStartColor: '#9E9E9E',
+                            borderEndColor: '#9E9E9E',
+                            borderTopColor: '#9E9E9E',
+                            borderBottomColor: '#9E9E9E',
+                        }}
+                        itemStyle={{
+                            justifyContent: 'flex-start'
+                        }}
+                        dropDownStyle={{ backgroundColor: '#fafafa' }}
+                    // onChangeItem={item => this.setState({
+                    //     country: item.value
+                    // })}
+                    />
+                    <Text
+                        style={styles.title1}>
+                        Mother Tounge
+            </Text>
+                    <DropDownPicker
+                        items={[
+                            { label: '1', value: 'Single', icon: () => <Icon name="Single" size={18} color="#900" />, hidden: true },
+                            { label: '2', value: 'Divorce', icon: () => <Icon name="flag" size={18} color="#900" /> },
+                            { label: '3', value: 'Awaiting Divorce', icon: () => <Icon name="flag" size={18} color="#900" /> },
+                            { label: '4', value: 'Widow', icon: () => <Icon name="flag" size={18} color="#900" /> },
+
+                        ]}
+                        // defaultValue={this.state.country}
+                        containerStyle={{
+                            height: 40, width: "40%",
+                            alignSelf: "center", right: 96,
+                            bottom: 240
+                        }}
+                        style={{
+                            backgroundColor: '#00000014', borderStartColor: '#9E9E9E',
+                            borderEndColor: '#9E9E9E',
+                            borderTopColor: '#9E9E9E',
+                            borderBottomColor: '#9E9E9E',
+                        }}
+                        itemStyle={{
+                            justifyContent: 'flex-start'
+                        }}
+                        dropDownStyle={{ backgroundColor: '#fafafa' }}
+                    // onChangeItem={item => this.setState({
+                    //     country: item.value
+                    // })}
+                    />
+                    <Text
+                        style={styles.title}>
+                        Religion
+       </Text>
+
+
+
+
+                    <Content>
+                        <Form>
+                            {/* <Picker
+                                note
+                                mode="dropdown"
+                                style={{ width: 120 }}
+                                selectedValue={this.state.selected}
+                                onValueChange={this.onValueChange.bind(this)}
+                            >
+                                <Picker.Item label="Wallet" value="key0" />
+                                <Picker.Item label="ATM Card" value="key1" />
+                                <Picker.Item label="Debit Card" value="key2" />
+                                <Picker.Item label="Credit Card" value="key3" />
+                                <Picker.Item label="Net Banking" value="key4" />
+                            </Picker> */}
+                        </Form>
+                    </Content>
+                    <Text
+                        style={styles.title2}>
+                        Caste
+            </Text>
+
+                    <DropDownPicker
+                        items={[
+                            { label: '1', value: 'Single', icon: () => <Icon name="Single" size={18} color="#900" />, hidden: true },
+                            { label: '2', value: 'Divorce', icon: () => <Icon name="flag" size={18} color="#900" /> },
+                            { label: '3', value: 'Awaiting Divorce', icon: () => <Icon name="flag" size={18} color="#900" /> },
+                            { label: '4', value: 'Widow', icon: () => <Icon name="flag" size={18} color="#900" /> },
+
+                        ]}
+                        // defaultValue={this.state.country}
+                        containerStyle={{
+                            height: 40, width: "40%",
+                            alignSelf: "center", right: 96,
+                            bottom: 240
+                        }}
+                        style={{
+                            backgroundColor: '#00000014', borderStartColor: '#9E9E9E',
+                            borderEndColor: '#9E9E9E',
+                            borderTopColor: '#9E9E9E',
+                            borderBottomColor: '#9E9E9E',
+                        }}
+                        itemStyle={{
+                            justifyContent: 'flex-start'
+                        }}
+                        dropDownStyle={{ backgroundColor: '#fafafa' }}
+                    // onChangeItem={item => this.setState({
+                    //     country: item.value
+                    // })}
+                    />
+                    <Text
+                        style={styles.title3}>
+                        Rassi
+       </Text>
+
+                    <Text
+                        style={styles.food}>
+
+                        Food Habbits
+          </Text>
+                    <View style={{ bottom: 285, left: 25, flex: 1, flexDirection: "row" }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.food1}>
+                            VEG
+            </Text>
+                    </View>
+                    <View style={{ bottom: 322, left: 95, flex: 1, flexDirection: "row" }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.food2}>
+                            NONVEG
+            </Text>
+                    </View>
+                    <View style={{ bottom: 358, left: 190, flex: 1, flexDirection: "row" }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.food3}>
+                            EGG
+            </Text>
+                    </View>
+
+                    <View style={{ bottom: 393, left: 255, flex: 1, flexDirection: "row" }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.food4}>
+                            VAGAN
+            </Text>
+                    </View>
+
+
+
+                    <Text
+                        style={styles.tool}>
+
+                        Drinking Habbits
+          </Text>
+                    <View style={{ bottom: 364, left: 25, flex: 1, flexDirection: "row" }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.tool1}>
+                            NO
+            </Text>
+                    </View>
+                    <View style={{ bottom: 400, left: 100, flex: 1, flexDirection: "row" }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.tool2}>
+                            LIGHT
+            </Text>
+                    </View>
+                    <View style={{ bottom: 437, left: 190, flex: 1, flexDirection: "row" }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.tool3}>
+                            REGULAR
+            </Text>
+                    </View>
+
+                    <Text
+                        style={styles.tool5}>
+
+                        Smoking Habbits
+          </Text>
+                    <View style={{ bottom: 401, left: 25, flex: 1, flexDirection: "row" }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.tool6}>
+                            NO
+            </Text>
+                    </View>
+                    <View style={{ bottom: 438, left: 100, flex: 1, flexDirection: "row" }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.tool7}>
+                            LIGHT
+            </Text>
+                    </View>
+                    <View style={{ bottom: 475, left: 190, flex: 1, flexDirection: "row" }}>
+                        <Right>
+                            <Radio selected={false} />
+                        </Right>
+                        <Text
+                            style={styles.tool8}>
+                            REGULAR
+            </Text>
+                    </View>
+
+                    <Text
+                        style={styles.about}>
+
+                        About Me
+          </Text>
+                    <View style={{ borderRadius: 1, borderWidth: 1, borderColor: "#000", bottom: 430, width: 350, alignSelf: "center", height: 160 }}>
+                        <Text multiline={true}
+                            numberOfLines={6}
+                            blurOnSubmit={false}
+
+                            style={{ fontSize: 20, alignSelf: "center", width: "90%", color: "#000", }}>
+                            Bio: Rani Samrit is my name please contact me if you need any help. Rani Samrit is
+     my name please contact me if you need any help.djsjsjfsnkcnxcjncxm</Text>
+
+                    </View>
+
+                    <TouchableOpacity
+                        style={styles.buttonStyle}
+                        activeOpacity={0.5}
+                        onPress={() => props.navigation.navigate('Education')}
+                    >
+                        <Text style={styles.buttonTextStyle}>SAVE</Text>
+                    </TouchableOpacity>
+
+                    <View style={{ backgroundColor: "#000", bottom: 370, height: "50%" }}>
+                        <Text style={{ color: "#fff", fontSize: 22, left: 30, top: 40 }}>ABOUT</Text>
+                        <Text style={{ color: "#fff", fontSize: 22, left: 30, top: 40 }}>MarathiMatrimony is a part of BharatMatrimony -the</Text>
+                        <Text style={{ color: "#fff", fontSize: 22, left: 30, top: 40 }}>pinoeers of online matrimony</Text>
+                        <Text style={{ color: "#fff", fontSize: 22, left: 30, top: 40 }}>service</Text>
+
+                        <Text style={{ color: "#fff", fontSize: 20, left: 30, top: 100 }}>CATEGORIES</Text>
+                        <Text style={{ color: "#757575", fontSize: 14, left: 30, top: 110 }}>Maratha Matrimony</Text>
+                        <Text style={{ color: "#757575", fontSize: 14, left: 30, top: 120 }}>CommunityMatrimony.com</Text>
+                        <Text style={{ color: "#fff", fontSize: 20, left: 240, top: 40 }}>QUICK LINKS</Text>
+                        <Text style={{ color: "#757575", fontSize: 14, left: 240, top: 50 }}>About Us</Text>
+                        <Text style={{ color: "#757575", fontSize: 14, left: 240, top: 60 }}>Contact Us</Text>
+                        <Text style={{ color: "#757575", fontSize: 14, left: 240, top: 70 }}>Privacy Policy</Text>
+                        <Text style={{ color: "#757575", fontSize: 14, left: 240, top: 80 }}>Sitemap</Text>
+
+                        <Separator bordered />
+                        <Text style={{ color: "#fff", fontSize: 25, top: 200, alignSelf: "center" }}>Copyright Â© 2020 All Rights</Text>
+                        <Text style={{ color: "#fff", fontSize: 25, top: 220, alignSelf: "center" }}>Reserved by</Text>
+                    </View>
+
+                </SafeAreaView>
+            </ScrollView >
+
+        );
+    }
+}
+
+export default ;
+
+export const styles = StyleSheet.create({
+    mainBody: {
+        flex: 1,
+        backgroundColor: "#F5F5F5",
+
+    },
+
+    registerTextStyle: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 17,
+        right: 50,
+        marginTop: 25,
+
+    },
+    registerTextStyle1: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 17,
+        right: 80,
+        marginTop: 20,
+        paddingBottom: 5
+    },
+
+    registerTextStyle2: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 13,
+        right: 65,
+
+    },
+    registerTextStyle3: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 14,
+        top: 11
+
+    },
+    registerTextStyle4: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 17,
+        right: 125,
+        marginTop: 25,
+        paddingBottom: 10
+    },
+    registerTextStyle5: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 13,
+        right: 80,
+        paddingBottom: 15,
+        bottom: 5
+    },
+    registerTextStyle6: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 13,
+        right: 90,
+        paddingBottom: 15
+    },
+
+    registerTextStyle7: {
+        color: '#9E9E9E',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 12,
+        right: 22,
+        paddingBottom: 15,
+        bottom: 75
+    },
+    registerTextStyle8: {
+        color: '#9E9E9E',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 12,
+        right: 11,
+        paddingBottom: 15,
+        bottom: 75
+    },
+    text: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 13,
+        right: 123,
+        paddingBottom: 15,
+        top: 5
+    },
+    text1: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 13,
+        left: 45,
+        bottom: 65,
+        paddingBottom: 15
+    },
+
+    text2: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 17,
+        right: 95,
+        //  marginTop:25,
+        bottom: 70
+    },
+    text3: {
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 15,
+        right: 110,
+        bottom: 30,
+        paddingBottom: 15
+    },
+    text4: {
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 15,
+        right: 60,
+        bottom: 30,
+        paddingBottom: 15
+    },
+    Text: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 17,
+        right: 90,
+        //  marginTop:25,
+        bottom: 100
+    },
+    Text1: {
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 15,
+        right: 115,
+        bottom: 30,
+        paddingBottom: 15
+    },
+    Text2: {
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 15,
+        right: 115,
+        bottom: 30,
+        paddingBottom: 15
+    },
+    Text3: {
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 15,
+        right: 87,
+        bottom: 30,
+        paddingBottom: 15
+    },
+    title: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 13,
+        left: 40,
+        bottom: 235,
+        paddingBottom: 15
+    },
+    title1: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 13,
+        right: 120,
+        bottom: 165,
+        paddingBottom: 15
+    },
+    title2: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 13,
+        right: 150,
+        bottom: 235,
+        paddingBottom: 15
+    },
+    title3: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 13,
+        left: 30,
+        bottom: 305,
+        paddingBottom: 15
+    },
+    food: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 17,
+        right: 110,
+        //  marginTop:25,
+        bottom: 300
+    },
+    food1: {
+        flex: 1,
+        flexDirection: "row",
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 14,
+        right: 145,
+        top: 7,
+        paddingBottom: 15
+    },
+    food2: {
+        flex: 1,
+        flexDirection: "row",
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 14,
+        right: 135,
+        top: 7,
+        paddingBottom: 15
+    },
+    food3: {
+        flex: 1,
+        flexDirection: "row",
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 14,
+        right: 147,
+        top: 7,
+        paddingBottom: 15
+    },
+    food4: {
+        flex: 1,
+        flexDirection: "row",
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 14,
+        right: 140,
+        top: 7,
+        paddingBottom: 15
+    },
+    tool: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 17,
+        right: 96,
+        //  marginTop:25,
+        bottom: 380
+    },
+    tool1: {
+        flex: 1,
+        flexDirection: "row",
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 14,
+        right: 145,
+        top: 7,
+        paddingBottom: 15
+    },
+    tool2: {
+        flex: 1,
+        flexDirection: "row",
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 14,
+        right: 135,
+        top: 7,
+        paddingBottom: 15
+    },
+    tool3: {
+        flex: 1,
+        flexDirection: "row",
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 14,
+        right: 130,
+        top: 7,
+        paddingBottom: 15
+    },
+    tool4: {
+        flex: 1,
+        flexDirection: "row",
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 14,
+        right: 140,
+        top: 7,
+        paddingBottom: 15
+    },
+    tool5: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 17,
+        right: 95,
+        //  marginTop:25,
+        bottom: 420
+    },
+    tool6: {
+        flex: 1,
+        flexDirection: "row",
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 14,
+        right: 145,
+        top: 7,
+        paddingBottom: 15
+    },
+    tool7: {
+        flex: 1,
+        flexDirection: "row",
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 14,
+        right: 135,
+        top: 7,
+        paddingBottom: 15
+    },
+    tool8: {
+        flex: 1,
+        flexDirection: "row",
+        color: '#000',
+        textAlign: 'center',
+        // fontWeight: 'bold',
+        fontSize: 14,
+        right: 130,
+        top: 7,
+        paddingBottom: 15
+    },
+    about: {
+        color: '#000',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 20,
+        right: 120,
+        //  marginTop:25,
+        bottom: 450
+    },
+    buttonStyle: {
+        backgroundColor: '#66CC00',
+        borderWidth: 0,
+        color: '#FFFFFF',
+        borderColor: '#7DE24E',
+        height: 40,
+        alignItems: 'center',
+        borderRadius: 30,
+        marginLeft: 80,
+        marginRight: 80,
+        marginTop: 20,
+        marginBottom: 20,
+        bottom: 400,
+
+    },
+    buttonTextStyle: {
+        color: '#000',
+        paddingVertical: 10,
+        fontSize: 16,
+    },
+});
